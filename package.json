@@ -1,0 +1,28 @@
+{
+  "name": "Promethewz",
+  "version": "1.0.0",
+  "description": "A screen recorder desktop app",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "author": "Ishmam",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.0.3",
+    "electron-builder": "^22.9.1"
+  },
+  "build": {
+    "appId": "com.ishmam.promethewz",
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": [ "deb", "snap", "rpm" ],
+      "category": "utility",
+      "icon": "build/icon.png"
+    }
+  }
+}
