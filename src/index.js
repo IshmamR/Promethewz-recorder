@@ -2,8 +2,8 @@ const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
 // SET ENV
-// process.env.NODE_ENV = 'production';
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
+// process.env.NODE_ENV = 'development';
 
 const createWindow = () => {
 	// Create the browser window.
@@ -19,7 +19,7 @@ const createWindow = () => {
 
 	mainWindow.loadFile(path.join(__dirname, 'index.html'));
 	// developer tools to show
-	mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 };
 
 app.on('ready', function() {

@@ -115,7 +115,7 @@ function removeVideoSource() {
 function useCamera() {
 	removeVideoSource(); // sets video elements source to default
 	recordedChunks = [];
-	console.log('this function uses device camera');
+	console.log('using device camera');
 	// get access to the camera
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 		// Not adding `{ audio: true }` since we only want video now
