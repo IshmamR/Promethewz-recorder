@@ -17,6 +17,7 @@ videoSelectButton.onclick = getVideoSources;
 
 // Get the available video sources
 async function getVideoSources() {
+	removeVideoSource(); // sets video elements source to default
 	const inputSources = await desktopCapturer.getSources({
 		types: ['window', 'screen']
 	});
@@ -33,7 +34,7 @@ async function getVideoSources() {
 }
 
 let mediaRecorder; // media recorder instance
-const recordedChunks = [];
+let recordedChunks = [];
 
 // change the videoSource window to reocrd
 async function selectSource(source) {
@@ -100,13 +101,39 @@ async function handleStop(e) {
 
 // clear video element
 function removeVideoSource() {
+	recordedChunks = [];
+	// stop camera
+	// a video's MediaStream object is available through its srcObject attribute
+	const mediaStream = videoElement.srcObject;
+	// through the MediaStream, get the MediaStreamTracks with getTracks():
+	const tracks = mediaStream?.getTracks();
+	tracks?.forEach(track => track.stop());
 	videoElement.srcObject = null;
 }
 
 // use device camera
 function useCamera() {
-	videoElement.srcObject = null;
+	removeVideoSource(); // sets video elements source to default
+	recordedChunks = [];
 	console.log('this function uses device camera');
+	// get access to the camera
+	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+		// Not adding `{ audio: true }` since we only want video now
+		const mediaObj = { audio: true, video: true }
+		navigator.mediaDevices.getUserMedia(mediaObj)
+		.then(function(stream) {
+			videoElement.srcObject = stream;
+			videoElement.play();
+			videoElement.muted = true;
+
+			// create recorder
+			const options = { mimeType: 'video/webm; codecs=vp9' };
+			mediaRecorder = new MediaRecorder(stream, options);
+			//register event handlers
+			mediaRecorder.ondataavailable = handleDataAvailable;
+			mediaRecorder.onstop = handleStop;
+		});
+	}
 }
 
 
