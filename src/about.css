@@ -1,0 +1,28 @@
+body::-webkit-scrollbar {
+  width: 12px;/* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #212121;/* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #616161;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #212121;  /* creates padding around scroll thumb */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  margin: auto;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 1rem 1rem;
+  padding-bottom: 0;
+  color: #fff;
+}
+
+div {
+  margin-bottom: 0.5rem;
+}

@@ -1,9 +1,12 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
+let aboutWindow;
+
 // SET ENV
-process.env.NODE_ENV = 'production';
-// process.env.NODE_ENV = 'development';
+
+// process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 
 const createWindow = () => {
 	// Create the browser window.
@@ -19,7 +22,9 @@ const createWindow = () => {
 
 	mainWindow.loadFile(path.join(__dirname, 'index.html'));
 	// developer tools to show
-	// mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
+	// quit app if mainWindow closes
+	mainWindow.on('closed', () => app.quit());
 };
 
 app.on('ready', function() {
@@ -57,6 +62,23 @@ const mainMenuTemplate =  [
 				}
 			}
 		]
+	},
+	{
+		label: 'About',
+		click(){
+			aboutWindow = new BrowserWindow({
+				width: 600,
+				height: 800,
+				webPreferences: {
+					enableRemoteModule: true,
+					contextIsolation: false,
+					nodeIntegration: true
+				}
+			});
+			aboutWindow.removeMenu();
+			aboutWindow.loadFile(path.join(__dirname, 'about.html'));
+			aboutWindow.on('closed', () => { aboutWindow = null; });
+		}
 	}
 ];
 

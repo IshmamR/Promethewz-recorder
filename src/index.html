@@ -11,23 +11,40 @@
 </head>
 
 <body class="grey darken-4">
+	<div id="captured">
+		<canvas id="toDownload"></canvas>
+		<div>
+			<button id="saveCapture" class="btn btn-sm green">Save</button>
+			<button id="closeCapture" class="btn btn-sm red">Close</button>
+		</div>
+		<canvas id="canvas"></canvas>
+	</div>
+
 	<div style="text-align:center;">
-		<h3>Promethewz</h3>
+		<h4>Promethewz</h4>
 		<small>screen recorder</small>
 		<hr />
 
-		<video></video>
+		<div id="video">
+			<video></video>
+			<div class="progress" id="loader">
+				<div class="indeterminate light-green accent-3"></div>
+			</div>
+		</div>
 
 		<br />
 
 		<button id="strtBtn" class="blue lighten-2 btn waves-effect waves-light">Start</button>
-		<button id="stopBtn" class="red btn waves-effect waves-light">Stop</button>
+		<button id="stopBtn" class="red lighten-1 btn waves-effect waves-light">Stop</button>
+		<button id="openCapture" class="green lighten-2 btn waves-effect waves-light">Capture</button>
 		
 		<hr />
 
 		<button id="vidSlctBtn" class="grey darken-2 btn waves-effect waves-light">Choose screen</button>
 		<button id="cameraBtn" class="blue btn waves-effect waves-light">Camera</button>
-		<button id="stopScrn" class="red darken-3 btn waves-effect waves-light">Stop screen</button>
+		<button id="stopScrn" class="red darken-1 btn waves-effect waves-light">Stop screen</button>
+
+		<hr id="bottom-line" />
 	</div>
 
 	<script src="app.js" defer></script>

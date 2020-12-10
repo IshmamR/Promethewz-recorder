@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Promethewz</title>
+
+	<link rel="stylesheet" type="text/css" href="styles/materialize.css">
+	<script src="styles/materialize.js" defer></script>
+	
+	<link rel="stylesheet" href="about.css">
+</head>
+
+<body class="grey darken-4">
+		<h3 style="margin:0">Promethewz</h3>
+		<p>screen recorder</p>
+		<h4>About:</h4>
+		<p>This screen recorder is a free and open-source application built on Electron.js framework. It's easy to install and easy to use.</p>
+		<p>You can find all the codes for this app at <a href="" id="github">https://github.com/IshmamR/Promethewz-screen-recorder</a></p>
+		<p>For any issues and bugs, create an issue on the GitHub repo, or e-mail me at <a href="" id="mail">ishmam785@gmail.com</a></p>
+		
+		<h4>How to use:</h4>
+		<div>
+			<button class="grey darken-2 btn waves-effect waves-light">Choose screen</button>
+			&nbsp;<strong>Choose screen to record or capture</strong>
+		</div>
+		<div>			
+			<button class="blue btn waves-effect waves-light">Camera</button>
+			&nbsp;<strong>Opens camera</strong>
+		</div>
+		<div>
+			<button class="red darken-1 btn waves-effect waves-light">Stop screen</button>
+			&nbsp;<strong>Stop playing video</strong>
+		</div>
+		<div>
+			<button class="blue lighten-2 btn waves-effect waves-light">Start</button>
+			&nbsp;<strong>Starts recording after choosing a screen or camera</strong>
+		</div>
+		<div>
+			<button class="red lighten-1 btn waves-effect waves-light">Stop</button>
+			&nbsp;<strong>Stops recording and saves the recorded video</strong>
+		</div>
+		<div>
+			<button class="green lighten-2 btn waves-effect waves-light">Capture</button>
+			&nbsp;<strong>Capures a screenshot</strong>
+		</div>
+		<div>
+			<button class="btn btn-sm green">Save</button>
+			&nbsp;<strong>Saves capured screenshot</strong>
+		</div>
+		<div>
+			<button class="btn btn-sm red">Close</button>
+			&nbsp;<strong>Closes screenshot</strong>
+		</div>
+
+		<p>Thank you for using Promethewz.</p>
+		<small>&copy; 2020 <a href="" id="portfolio" style="color:#929292">Ishmam's</a>.</small>
+		<hr>
+
+
+	<script defer>
+		const { shell } = require('electron');
+		document.querySelector('#github').addEventListener('click', () => {
+			shell.openExternal('https://github.com/IshmamR/Promethewz-recorder');
+		})
+		document.querySelector('#mail').addEventListener('click', () => {
+			shell.openExternal('mailto:ishmam785@gmail.com');
+		})
+		document.querySelector('#portfolio').addEventListener('click', () => {
+			shell.openExternal('https://ishmamz.herokuapp.com');
+		})
+	</script>
+</body>
+</html>
